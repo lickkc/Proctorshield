@@ -76,11 +76,17 @@ This project introduces a cutting-edge **AI-powered proctoring system** designed
 
 <table>
    <tr>
-      <td><img src="https://www.socialwinterofcode.com/SWOC_W_Black.png" width="200" height="auto" loading="lazy" alt="GSSoC-EXT"/></td>
+      <td><img src="https://www.socialwinterofcode.com/SWOC_W_Black.png" width="200" height="auto" loading="lazy" alt="ssoc"/></td>
       <td>Social Winter Of Code</td>
-      <td>Social Winter of Code is an open-source program Which aims to bring students into the world of open source development.</td>
+      <td>Social Winter of Code is an initiative to introduce students to the open-source world, fostering collaboration and development.</td>
+   </tr>
+   <tr>
+      <td><img src="https://github.com/user-attachments/assets/0ed89b16-a3f4-4492-9887-497cfe7e4174" width="200" height="auto" loading="lazy" alt="dwoc"/></td>
+      <td>Delta Winter Of Code</td>
+      <td>Delta Winter of Code empowers students by providing opportunities to contribute to meaningful open-source projects and grow their skills.</td>
    </tr>
 </table>
+
 
 </div>
 
