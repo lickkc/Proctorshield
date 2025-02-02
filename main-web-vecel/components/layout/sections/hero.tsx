@@ -15,46 +15,27 @@ interface AnimationData {
   text: string;
 }
 
-const animationDataPaths = [
-  { path: "/s1.json", text: "Intelligent Proctoring Solutions" },
-  { path: "/s2.json", text: "Real-time Monitoring & Analysis" },
-  { path: "/security-dark.json", text: "Advanced Security Measures" },
-];
+interface HeroSectionProps {
+  initialAnimations: AnimationData[];
+}
 
-export const HeroSection = () => {
+export const HeroSection = ({ initialAnimations }: HeroSectionProps) => {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTextFading, setIsTextFading] = useState(false);
-  const [animations, setAnimations] = useState<AnimationData[]>([]); // Explicitly define state type
-
-  // Fetch animation data dynamically
-  useEffect(() => {
-    const fetchAnimations = async () => {
-      const data = await Promise.all(
-        animationDataPaths.map(async (item) => {
-          const response = await fetch(item.path);
-          const animation = await response.json();
-          return { animation, text: item.text };
-        })
-      );
-      setAnimations(data); // TypeScript now knows the type of `data`
-    };
-
-    fetchAnimations();
-  }, []);
 
   // Handle animation index changes
   useEffect(() => {
     const interval = setInterval(() => {
       setIsTextFading(true);
       setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % animationDataPaths.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % initialAnimations.length);
         setIsTextFading(false);
       }, 500); // Wait for fade-out before changing text
     }, 5000); // Change every 5 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [initialAnimations.length]);
 
   return (
     <section className="container w-full">
@@ -122,10 +103,10 @@ export const HeroSection = () => {
           
           <div className="relative w-full md:w-[1200px] mx-auto rounded-lg">
             {/* Animation Container */}
-            {animations.length > 0 && (
+            {initialAnimations.length > 0 && (
               <div className="w-full h-[600px] relative">
                 <Lottie
-                  animationData={animations[currentIndex].animation}
+                  animationData={initialAnimations[currentIndex].animation}
                   loop={true}
                   className="w-full h-full transition-opacity duration-500 ease-in-out"
                 />
@@ -136,7 +117,7 @@ export const HeroSection = () => {
                     transition-all duration-500 ease-in-out transform
                     ${isTextFading ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}
                   >
-                    {animations[currentIndex].text}
+                    {initialAnimations[currentIndex].text}
                   </h3>
                 </div>
               </div>
