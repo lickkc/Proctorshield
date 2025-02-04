@@ -7,8 +7,10 @@ from HeadPoseEstimation.session import Session
 import base64
 import os
 import resend
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, methods=["GET", "POST"])
 cap = cv2.VideoCapture(0)
 
 resend.api_key = os.environ["RESEND_API_KEY"]
@@ -252,14 +254,16 @@ def stop_proctering():
 @app.route("/contact", methods=["POST"])
 def contact():
     params: resend.Emails.SendParams = {
-    "from": "onboarding@resend.dev",
-    "to": ["leomirandadev@gmail.com"],
-    "subject": f"New message from {request.json["firstName"]} {request.json["lastName"]} regarding {request.json["subject"]}",
-    "html": f"<h1><strong>Name:</strong></h1><br />{request.json["firstName"]} {request.json["lastName"]}<br /><br /><h1><strong>Email:</strong></h1><br />{request.json["email"]}<br /><br /><h1><strong>Subject:</strong></h1><br />{request.json["subject"]}<br /><br /><h1><strong>Message:</strong></h1><br />{request.json["message"]}",
+        "from": "onboarding@resend.dev",
+        # "to": ["leomirandadev@gmail.com"],
+        "to": ["dhruvkrishnavaid@gmail.com"],
+        "subject": f"New message from {request.json['firstName']} {request.json['lastName']} regarding {request.json['subject']}",
+        "html": f"<h3><strong>Name:</strong></h3><br />{request.json['firstName']} {request.json['lastName']}<br /><br /><hr /><h3><strong>Email:</strong></h3><br />{request.json['email']}<br /><br /><hr /><h3><strong>Subject:</strong></h3><br />{request.json['subject']}<br /><br /><hr /><h3><strong>Message:</strong></h3><br />{request.json['message']}",
     }
     res = resend.Emails.send(params)
     print(res)
-    return(res)
+    return res
+
 
 @app.route("/")
 def start():
@@ -271,4 +275,4 @@ def start():
 
 if __name__ == "__main__":
     debug_mode = os.getenv("FLASK_DEBUG", "False").lower() in ["true", "1", "t"]
-    app.run(debug=debug_mode)
+    app.run(debug=True)
