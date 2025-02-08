@@ -39,7 +39,7 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <HeroSection />

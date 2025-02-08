@@ -3,45 +3,23 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-
-// Dynamically import Lottie
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
-interface AnimationData {
-  animation: any; // Replace 'any' with the specific type if you know it (e.g., `object`)
-  text: string;
-}
+import s1 from "@/public/s1.json";
+import s2 from "@/public/s2.json";
+import securityDark from "@/public/security-dark.json";
+import { AnimationContainer } from "@/components/ui/animation-container";
 
 const animationDataPaths = [
-  { path: "/s1.json", text: "Intelligent Proctoring Solutions" },
-  { path: "/s2.json", text: "Real-time Monitoring & Analysis" },
-  { path: "/security-dark.json", text: "Advanced Security Measures" },
+  { animation: s1, text: "Intelligent Proctoring Solutions" },
+  { animation: s2, text: "Real-time Monitoring & Analysis" },
+  { animation: securityDark, text: "Advanced Security Measures" },
 ];
 
 export const HeroSection = () => {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTextFading, setIsTextFading] = useState(false);
-  const [animations, setAnimations] = useState<AnimationData[]>([]); // Explicitly define state type
-
-  // Fetch animation data dynamically
-  useEffect(() => {
-    const fetchAnimations = async () => {
-      const data = await Promise.all(
-        animationDataPaths.map(async (item) => {
-          const response = await fetch(item.path);
-          const animation = await response.json();
-          return { animation, text: item.text };
-        })
-      );
-      setAnimations(data); // TypeScript now knows the type of `data`
-    };
-
-    fetchAnimations();
-  }, []);
 
   // Handle animation index changes
   useEffect(() => {
@@ -50,8 +28,8 @@ export const HeroSection = () => {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % animationDataPaths.length);
         setIsTextFading(false);
-      }, 500); // Wait for fade-out before changing text
-    }, 5000); // Change every 5 seconds
+      }, 500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -119,30 +97,11 @@ export const HeroSection = () => {
 
         <div className="relative group mt-14">
           <div className="absolute top-2 lg:-top-8 left-1/2 transform -translate-x-1/2 w-[90%] mx-auto h-24 lg:h-80 bg-primary/50 rounded-full blur-3xl"></div>
-          
-          <div className="relative w-full md:w-[1200px] mx-auto rounded-lg">
-            {/* Animation Container */}
-            {animations.length > 0 && (
-              <div className="w-full h-[600px] relative">
-                <Lottie
-                  animationData={animations[currentIndex].animation}
-                  loop={true}
-                  className="w-full h-full transition-opacity duration-500 ease-in-out"
-                />
-                {/* Animated text overlay */}
-                <div className="absolute bottom-8 left-0 right-0 text-center">
-                  <h3
-                    className={`text-2xl font-bold text-primary bg-background/80 inline-block px-6 py-3 rounded-lg
-                    transition-all duration-500 ease-in-out transform
-                    ${isTextFading ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}
-                  >
-                    {animations[currentIndex].text}
-                  </h3>
-                </div>
-              </div>
-            )}
-          </div>
-
+          <AnimationContainer
+            animationDataPaths={animationDataPaths}
+            currentIndex={currentIndex}
+            isTextFading={isTextFading}
+          />
           <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-b from-background/0 via-background/50 to-background rounded-lg"></div>
         </div>
       </div>
