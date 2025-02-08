@@ -39,40 +39,10 @@ export const metadata = {
   },
 };
 
-async function getAnimations() {
-  const animationDataPaths = [
-    { path: "/s1.json", text: "Intelligent Proctoring Solutions" },
-    { path: "/s2.json", text: "Real-time Monitoring & Analysis" },
-    { path: "/security-dark.json", text: "Advanced Security Measures" },
-  ];
-
-  const data = await Promise.all(
-    animationDataPaths.map(async (item) => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${item.path}`, {
-          cache: 'force-cache',
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        const animation = await response.json();
-        return { animation, text: item.text };
-      } catch (error) {
-        console.error(`Error loading animation ${item.path}:`, error);
-        throw error;
-      }
-    })
-  );
-  return data;
-}
-
 export default async function Home() {
-  const animations = await getAnimations();
   return (
     <>
-      <HeroSection initialAnimations={animations} />
+      <HeroSection />
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />
