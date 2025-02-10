@@ -32,7 +32,7 @@ export const SponsorsSection = () => {
 
       <div className="mx-auto">
         <Marquee
-          className="gap-[4rem]" // Increased gap between logos
+          className="gap-[4rem] animate-marquee-slow" // Increased gap between logos
           fade
           innerClassName="gap-[4rem]" // Increased gap between logos
           pauseOnHover
