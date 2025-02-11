@@ -10,7 +10,7 @@ export const FooterSection = () => {
           <div className="col-span-full xl:col-span-2">
             <Link href="#" className="flex font-bold items-center">
               <Image
-                src="https://github.com/Hiteshydv001/Guard-AI/raw/main/demo/guard_eye_logo.png"
+                src="https://github.com/Hiteshydv001/Guard-AI-Designing-Remote-Proctoring-System/blob/main/demo/logo-ai.png?raw=true"
                 alt="Guard AI Logo"
                 width={48}
                 height={48}
