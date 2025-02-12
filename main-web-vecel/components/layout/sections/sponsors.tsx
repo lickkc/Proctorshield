@@ -2,6 +2,7 @@
 
 import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
+import Image from "next/image";
 
 interface sponsorsProps {
   logoUrl: string;
@@ -42,10 +43,13 @@ export const SponsorsSection = () => {
               key={name}
               className="flex items-center text-xl md:text-2xl font-medium"
             >
-              <img
+
+              <Image
                 src={logoUrl}
                 alt={altText}
-                className="mr-4 h-10" // Space and size adjustment for the logos
+                width={40}
+                height={40}
+                className="mr-4 h-10"
               />
               {name}
             </div>

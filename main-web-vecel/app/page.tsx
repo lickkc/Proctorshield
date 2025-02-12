@@ -53,7 +53,6 @@ export default async function Home() {
       <PricingSection />
       <ContactSection />
       <FAQSection />
-      <FooterSection />
     </>
   );
 }
