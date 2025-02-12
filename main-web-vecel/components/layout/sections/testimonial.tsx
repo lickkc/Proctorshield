@@ -141,8 +141,8 @@ export const TestimonialSection = () => {
             ))}
           </CarouselContent>
           <div className="flex justify-center gap-2 mt-8">
-            {/* <CarouselPrevious className="relative static" />
-            <CarouselNext className="relative static" /> */}
+            <CarouselPrevious className="relative static" />
+            <CarouselNext className="relative static" />
           </div>
         </Carousel>
       </div>
