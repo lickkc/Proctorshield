@@ -2,6 +2,7 @@
 
 import { Shield, Brain, Clock, Users, Award,BarChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import Image from "next/image";
 
 const features = [
   {
@@ -52,11 +53,13 @@ export default function ShowcasePage() {
 
         {/* Hero Image */}
         <div className="relative rounded-xl overflow-hidden mb-16 shadow-2xl">
-          <img
-            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80"
-            alt="AI-Powered Proctoring"
-            className="w-full h-[400px] object-cover"
-          />
+        <Image
+  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80"
+  alt="AI-Powered Proctoring"
+  width={1200}  
+  height={800}  
+  className="w-full h-[400px] object-cover"
+/>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
         </div>
 
