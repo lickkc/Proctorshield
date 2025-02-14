@@ -154,11 +154,9 @@ export const TeamSection = () => {
           Thanks to these wonderful people:
         </p>
         <a href="https://github.com/Hiteshydv001/Guard-AI/graphs/contributors" target="_blank" rel="noopener noreferrer">
-          <Image
+          <img
             src="https://contrib.rocks/image?repo=Hiteshydv001/Guard-AI"
             alt="Contributors"
-            width={500}  
-            height={300} 
             className="mx-auto mt-4"
           />
         </a>
