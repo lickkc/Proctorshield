@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response
 import cv2
 import mediapipe as mp
 import math
+import os
 
 app = Flask(__name__)
 
@@ -57,4 +58,5 @@ def video_feed():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    debug_mode = os.getenv('FLASK_DEBUG', '0') == '1'
+    app.run(debug=debug_mode)
