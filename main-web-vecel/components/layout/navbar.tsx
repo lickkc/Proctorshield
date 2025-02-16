@@ -24,6 +24,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { ToggleTheme } from "./toogle-theme";
 import { usePathname } from "next/navigation";
+import ShowcasePage from "../../app/(root)/features/showcase/page";
+import TrustPage from "../../app/(root)/features/trust/page";
+import CapturePage from "../../app/(root)/features/capture/page";
+import { useRouter } from "next/navigation";
 
 const routeList = [
   { href: "#testimonials", label: "Project" },
@@ -36,26 +40,35 @@ const featureList = [
   {
     title: "Showcase Your Value",
     description: "Highlight how Guard AI helps solve user problems efficiently.",
+    href: "/features/showcase",
+   Element: <ShowcasePage />,
   },
   {
     title: "Build Trust",
     description:
       "Leverages Guard AI's robust features to establish trust and credibility in AI-driven security.",
+      href: "/features/trust",
+      Element:<TrustPage />,
   },
   {
     title: "Capture Leads",
     description:
       "Design visually appealing and strategically placed lead capture forms with Guard AI.",
+      href: "/features/capture",
+      Element:<CapturePage />,
   },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-
+  const router = useRouter();
   if (pathname === "/Signin" || pathname === "/Signup"  || pathname === "/candidate" || pathname === "/proctor") {
     return null;
   }
+  const handleFeatureClick = (href: string) => {
+    router.push(href);
+  };
 
   return (
     <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
@@ -170,8 +183,8 @@ export const Navbar = () => {
                   height={600}
                 />
                 <ul className="flex flex-col gap-2">
-                  {featureList.map(({ title, description }) => (
-                    <li key={title} className="rounded-md p-3 text-sm hover:bg-muted">
+                  {featureList.map(({ title, description,href, Element }) => (
+                    <li key={title} className="rounded-md p-3 text-sm hover:bg-muted cursor-pointer" onClick={() => handleFeatureClick(href)}>
                       <p className="mb-1 font-semibold leading-none text-foreground">
                         {title}
                       </p>

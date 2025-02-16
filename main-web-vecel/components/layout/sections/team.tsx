@@ -123,9 +123,8 @@ export const TeamSection = () => {
               {positions.map((position, index) => (
                 <CardContent
                   key={index}
-                  className={`pb-0 text-muted-foreground ${
-                    index === positions.length - 1 && "pb-6"
-                  }`}
+                  className={`pb-0 text-muted-foreground ${index === positions.length - 1 && "pb-6"
+                    }`}
                 >
                   {position}
                   {index < positions.length - 1 && <span>,</span>}

@@ -76,11 +76,22 @@ This project introduces a cutting-edge **AI-powered proctoring system** designed
 
 <table>
    <tr>
-      <td><img src="https://www.socialwinterofcode.com/SWOC_W_Black.png" width="200" height="auto" loading="lazy" alt="GSSoC-EXT"/></td>
+      <td><img src="https://www.socialwinterofcode.com/SWOC_W_Black.png" width="200" height="auto" loading="lazy" alt="ssoc"/></td>
       <td>Social Winter Of Code</td>
-      <td>Social Winter of Code is an open-source program Which aims to bring students into the world of open source development.</td>
+      <td>Social Winter of Code is an initiative to introduce students to the open-source world, fostering collaboration and development.</td>
+   </tr>
+   <tr>
+      <td><img src="https://github.com/user-attachments/assets/0ed89b16-a3f4-4492-9887-497cfe7e4174" width="200" height="auto" loading="lazy" alt="dwoc"/></td>
+      <td>Delta Winter Of Code</td>
+      <td>Delta Winter of Code empowers students by providing opportunities to contribute to meaningful open-source projects and grow their skills.</td>
+   </tr>
+    <tr>
+      <td><img src="https://media.licdn.com/dms/image/v2/C560BAQEp7MUBpYE93g/company-logo_200_200/company-logo_200_200/0/1630672259441/jwoc_logo?e=2147483647&v=beta&t=wgkKrzLc-UxgSCnWShwkjn_zTXQnaa0_4cmbv4fN4PA" width="600" height="auto" loading="lazy" alt="jgec"/></td>
+      <td>JWOC Winter of Code</td>
+      <td>JWoC provides a fully immersive learning experience for students and first-time contributors by promoting the wonders of open-source software and crafting a community of new and experienced technical developers. The best projects are selected for this program. Students get acquainted with the projects from the mentors during the Community Bonding Period. Students work on these projects during the coding phase. At the end of the coding period, the winners of the programs are announced on the basis of their contribution in terms of quantity as well as quality.</td>
    </tr>
 </table>
+
 
 </div>
 
