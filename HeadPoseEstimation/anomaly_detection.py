@@ -152,7 +152,7 @@ class Anomaly_Detection:
         else:
             if self.mult_face_start_time is not None:
                 reason = self.multi_face_reason
-                log = f"Datetime: {datetime.now()}\n{reason + " detected!"}\nDuration: {time.time() - self.mult_face_start_time}"
+                log = f"Datetime: {datetime.now()}\n{reason + ' detected!'}\nDuration: {time.time() - self.mult_face_start_time}"
                 index = self.index
 
                 self.suspicious_movements[reason] += 1

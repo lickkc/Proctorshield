@@ -1,14 +1,11 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Building2, Clock, Mail, Phone } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
@@ -18,7 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -27,6 +23,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { Building2, Clock, Mail, Phone } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 const formSchema = z.object({
   firstName: z.string().min(2).max(255),
@@ -48,13 +49,21 @@ export const ContactSection = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     const { firstName, lastName, email, subject, message } = values;
     console.log(values);
-
-    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${encodeURIComponent(subject)}&body=Hello I am ${encodeURIComponent(firstName)} ${encodeURIComponent(lastName)}, my Email is ${encodeURIComponent(email)}. %0D%0A${encodeURIComponent(message)}`;
-
-    window.location.href = mailToLink;
+    const req = await axios.post((process.env.API_URL as string) + "/contact", {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      subject: subject,
+      message: message,
+    });
+    if (req.status === 200) {
+      console.log("Success");
+    } else {
+      console.log("Failed");
+    }
   }
 
   return (
@@ -160,11 +169,7 @@ export const ContactSection = () => {
                       <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="E-mail"
-                            {...field}
-                          />
+                          <Input type="email" placeholder="E-mail" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -192,14 +197,12 @@ export const ContactSection = () => {
                             <SelectItem value="Contribution">
                               Contribution
                             </SelectItem>
-                            <SelectItem value="Bug">
-                              Bug
-                            </SelectItem>
+                            <SelectItem value="Bug">Bug</SelectItem>
                             <SelectItem value="Feature Request">
                               Feature Request
                             </SelectItem>
                             <SelectItem value="Web development">
-                            Web development
+                              Web development
                             </SelectItem>
                           </SelectContent>
                         </Select>
