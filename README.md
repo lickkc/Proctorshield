@@ -259,8 +259,12 @@ Directory structure:
 └── hiteshydv001-guard-ai-designing-remote-proctoring-system/
     ├── README.md
     ├── CONTRIBUTING.md
+    ├── FAQ.md
+    ├── Procfile
     ├── index.html
     ├── lips_movement_detection.py
+    ├── requirements.txt
+    ├── requiremnts.txt
     ├── server.py
     ├── GazeTracking/
     │   ├── example.py
@@ -273,8 +277,32 @@ Directory structure:
     │       ├── pupil.py
     │       └── trained_models/
     │           └── shape_predictor_68_face_landmarks.dat
+    ├── Guard-AI_AudioDetection/
+    │   ├── README.md
+    │   ├── main.py
+    │   ├── requirements.txt
+    │   ├── .DS_Store
+    │   ├── app/
+    │   │   ├── __init__.py
+    │   │   ├── audio_capture.py
+    │   │   ├── noise_reduction.py
+    │   │   ├── .DS_Store
+    │   │   ├── __pycache__/
+    │   │   ├── alerts/
+    │   │   │   ├── alert_system.py
+    │   │   │   ├── logger.py
+    │   │   │   └── __pycache__/
+    │   │   └── detection/
+    │   │       ├── keyword_detection.py
+    │   │       └── __pycache__/
+    │   ├── assets/
+    │   │   ├── logs/
+    │   │   │   └── event_log.json
+    │   │   └── samples/
+    │   └── tests/
+    │       └── test_audio_capture.py
     ├── HeadPoseDetect/
-    │   ├── README.md Head_Tracking
+    │   ├── README.md
     │   ├── head_app.py
     │   ├── head_pose_detection.py
     │   └── index2.html
@@ -327,104 +355,37 @@ Directory structure:
     │       ├── index.html
     │       ├── proctering_screen.html
     │       └── stop_proctering.html
-    ├── assets/
-    │   ├── css/
-    │   │   └── styles.css
-    │   ├── img/
-    │   ├── js/
-    │   │   └── main.js
-    │   └── scss/
-    │       └── styles.scss
-    ├── backend-proctoring/
-    │   ├── README.md
-    │   ├── package-lock.json
-    │   ├── package.json
-    │   ├── tsconfig.json
-    │   ├── .env.example
-    │   ├── .gitignore
-    │   ├── prisma/
-    │   │   ├── schema.prisma
-    │   │   └── migrations/
-    │   │       ├── migration_lock.toml
-    │   │       ├── 20250102012215_init/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250102104616_init/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250102104943_init/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250102111739_init/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250102113050_init/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250102145210_add_tab_change_and_heartbeat_logs/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250103204652_add_chat_message_model/
-    │   │       │   └── migration.sql
-    │   │       ├── 20250103221011_updated_enums_and_roles/
-    │   │       │   └── migration.sql
-    │   │       └── 20250104022816_/
-    │   │           └── migration.sql
-    │   └── src/
-    │       ├── server.ts
-    │       ├── auth/
-    │       │   └── Auth.ts
-    │       ├── config/
-    │       │   └── jwt.ts
-    │       ├── constants/
-    │       │   └── user.constants.ts
-    │       ├── controllers/
-    │       │   ├── auth.controller.ts
-    │       │   ├── exam.controller.ts
-    │       │   ├── organisation.controller.ts
-    │       │   ├── proctor.controller.ts
-    │       │   └── user.controller.ts
-    │       ├── middleware/
-    │       │   └── auth.ts
-    │       ├── modules/
-    │       │   ├── auth/
-    │       │   │   └── auth.service.ts
-    │       │   ├── exams/
-    │       │   │   └── exam.service.ts
-    │       │   ├── organisation/
-    │       │   │   └── organisation.service.ts
-    │       │   ├── proctoring/
-    │       │   │   └── proctor.service.ts
-    │       │   └── users/
-    │       │       └── user.service.ts
-    │       ├── routes/
-    │       │   ├── auth.routes.ts
-    │       │   ├── exam.routes.ts
-    │       │   ├── organisation.routes.ts
-    │       │   ├── proctor.routes.ts
-    │       │   └── user.routes.ts
-    │       ├── types/
-    │       │   └── express/
-    │       │       └── index.d.ts
-    │       ├── utils/
-    │       │   ├── errorResponse.ts
-    │       │   └── passwordHash.ts
-    │       └── websockets/
-    │           └── websocket.ts
     ├── demo/
+    │   └── Readme.md
+    ├── images/
     ├── main-web-vecel/
+    │   ├── Readme.md
     │   ├── components.json
     │   ├── middleware.ts
     │   ├── next.config.mjs
-    │   ├── package-lock.json
     │   ├── package.json
+    │   ├── pnpm-lock.yaml
     │   ├── postcss.config.mjs
     │   ├── tailwind.config.ts
     │   ├── tsconfig.json
+    │   ├── .env
     │   ├── .eslintrc.json
     │   ├── .gitignore
     │   ├── app/
     │   │   ├── globals.css
     │   │   ├── layout.tsx
+    │   │   ├── page.tsx
     │   │   ├── (root)/
     │   │   │   ├── loading.tsx
-    │   │   │   ├── page.tsx
     │   │   │   ├── candidate/
     │   │   │   │   └── page.tsx
+    │   │   │   ├── features/
+    │   │   │   │   ├── capture/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   ├── showcase/
+    │   │   │   │   │   └── page.tsx
+    │   │   │   │   └── trust/
+    │   │   │   │       └── page.tsx
     │   │   │   └── proctor/
     │   │   │       └── page.tsx
     │   │   ├── Signin/
@@ -441,6 +402,7 @@ Directory structure:
     │   │   │   └── x-icon.tsx
     │   │   ├── layout/
     │   │   │   ├── navbar.tsx
+    │   │   │   ├── tabswitchpopup.tsx
     │   │   │   ├── theme-provider.tsx
     │   │   │   ├── toogle-theme.tsx
     │   │   │   ├── usealert.tsx
@@ -459,29 +421,59 @@ Directory structure:
     │   │   │       └── testimonial.tsx
     │   │   └── ui/
     │   │       ├── accordion.tsx
+    │   │       ├── alert-dialog.tsx
     │   │       ├── alert.tsx
+    │   │       ├── animation-container.tsx
     │   │       ├── avatar.tsx
     │   │       ├── badge.tsx
     │   │       ├── button.tsx
     │   │       ├── card.tsx
     │   │       ├── carousel.tsx
     │   │       ├── collapsible.tsx
+    │   │       ├── dialog.tsx
+    │   │       ├── dropdown-menu.tsx
     │   │       ├── form.tsx
     │   │       ├── icon.tsx
     │   │       ├── input.tsx
     │   │       ├── label.tsx
     │   │       ├── navigation-menu.tsx
+    │   │       ├── placeholder.tsx
+    │   │       ├── popover.tsx
+    │   │       ├── progress.tsx
     │   │       ├── scroll-area.tsx
     │   │       ├── select.tsx
     │   │       ├── separator.tsx
     │   │       ├── sheet.tsx
-    │   │       └── textarea.tsx
+    │   │       ├── skeleton.tsx
+    │   │       ├── slider.tsx
+    │   │       ├── switch.tsx
+    │   │       ├── table.tsx
+    │   │       ├── tabs.tsx
+    │   │       ├── textarea.tsx
+    │   │       ├── toast.tsx
+    │   │       ├── toaster.tsx
+    │   │       └── tooltip.tsx
+    │   ├── hooks/
+    │   │   └── use-toast.ts
     │   ├── lib/
     │   │   └── utils.ts
     │   ├── public/
-    │   │   └── proctor-animation.json
+    │   │   ├── proctor-animation.json
+    │   │   ├── s1.json
+    │   │   ├── s2.json
+    │   │   ├── security-dark.json
+    │   │   └── security-light.json
     │   └── .vscode/
     │       └── settings.json
+    ├── project-static-info-website/
+    │   ├── Readme.md
+    │   ├── css/
+    │   │   └── styles.css
+    │   ├── img/
+    │   ├── js/
+    │   │   └── main.js
+    │   └── scss/
+    │       └── styles.scss
     └── .github/
         ├── ISSUE_TEMPLATE/
         │   ├── bug_report.md
