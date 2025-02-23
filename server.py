@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 import os
 import resend
 from flask_cors import CORS
+import logging
+
+logging.basicConfig(level=logging.ERROR, format='%(asctime)s %(levelname)s %(message)s')
 
 app = Flask(__name__)
 CORS(app, methods=["GET", "POST"])
@@ -22,7 +25,8 @@ def contact():
         print("Email sent! Response ID:",res.id)
         return res
     except Exception as e:
-        return {"error": str(e)}
+        logging.error("An error occurred: %s", str(e))
+        return {"error": "An internal error has occurred. Please try again later."}
 
 
 @app.route("/")
