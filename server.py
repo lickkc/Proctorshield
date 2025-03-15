@@ -6,7 +6,7 @@ import logging
 
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s %(levelname)s %(message)s')
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 CORS(app, methods=["GET", "POST"])
 
 resend.api_key = os.environ["RESEND_API_KEY"]
